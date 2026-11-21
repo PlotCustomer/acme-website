@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/products">Product Catalog</a>
+    <span aria-hidden="true">/</span>
+    <a href="{{ category_href }}">{{ product.product_type.label() }}</a>
+    <span aria-hidden="true">/</span>
+    <span aria-current="page">{{ product.name }}</span>
+</nav>
+
+<article class="product-detail">
+    <div class="detail-visual category-{{ product.product_type.slug() }}">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="{{ product.product_type.icon_path() }}"></path>
+        </svg>
+        <span class="product-tag">{{ product.product_type.label() }}</span>
+    </div>
+
+    <div class="detail-copy">
+        <p class="eyebrow">{{ product.product_type.label() }}</p>
+        <h1>{{ product.name }}</h1>
+        <p class="detail-summary">{{ product.summary }}</p>
+
+        <div class="detail-purchase">
+            <span class="detail-price">{{ product.formatted_price() }}</span>
+            <span class="detail-currency">Inclusive of all taxes</span>
+        </div>
+
+        <div class="detail-description">
+            <h2>About this product</h2>
+            <p>{{ product.description }}</p>
+        </div>
+
+        <div class="detail-actions">
+            <a class="button-primary" href="{{ category_href }}">Browse {{ product.product_type.label() }}</a>
+            <a class="button-secondary" href="/products">Back to all products</a>
+        </div>
+    </div>
+</article>
+
+<section class="detail-notes" aria-label="Catalog information">
+    <div>
+        <span class="note-number">01</span>
+        <h2>Catalog details</h2>
+        <p>Product information is maintained in the ACME Product Catalog and served by the Products API.</p>
+    </div>
+    <div>
+        <span class="note-number">02</span>
+        <h2>Need something else?</h2>
+        <p>Use the catalog search to look across all three product families, or narrow the list by category.</p>
+    </div>
+    <div>
+        <span class="note-number">03</span>
+        <h2>Product reference</h2>
+        <p><code>{{ product.slug }}</code></p>
+    </div>
+</section>
+{% endblock %}

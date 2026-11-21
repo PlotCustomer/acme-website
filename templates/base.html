@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Browse the ACME product catalog by category, name, and price.">
+    <title>{% block title %}Product Catalog{% endblock %} · ACME</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/site.css">
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to the catalog</a>
+    <div class="site-shell">
+        <header class="site-header">
+            <a class="brand" href="/products" aria-label="ACME Product Catalog home">
+                <span class="brand-mark" aria-hidden="true">A</span>
+                <span class="brand-wordmark">
+                    <strong>ACME</strong>
+                    <small>Product Catalog</small>
+                </span>
+            </a>
+            <nav class="site-nav" aria-label="Primary navigation">
+                <a href="/products">Browse products</a>
+                <a href="/api/products">Products API</a>
+            </nav>
+        </header>
+
+        <main id="main">
+            {% block content %}{% endblock %}
+        </main>
+
+        <footer class="site-footer">
+            <p>ACME Corporate Website <span aria-hidden="true">·</span> Product Catalog</p>
+            <p class="footer-note">Browse the full range of Everyday Goods, Explosives &amp; Weapons, and Vehicles &amp; Gadgets.</p>
+        </footer>
+    </div>
+</body>
+</html>
